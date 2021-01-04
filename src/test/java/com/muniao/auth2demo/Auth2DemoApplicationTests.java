@@ -17,12 +17,10 @@ import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Auth2DemoApplicationTests
-{
+public class Auth2DemoApplicationTests {
 
     @Test
-    public void contextLoads()
-    {
+    public void contextLoads() {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         System.out.println(passwordEncoder.encode("123"));
@@ -30,13 +28,10 @@ public class Auth2DemoApplicationTests
         System.out.println(passwordEncoder.encode("123"));
 
         System.out.println(passwordEncoder.matches("123", "$2a$10$LDwuVkti0rBTqT2.8LAdceOWYHjpO9vixkMFKxsJHx1j4Oi7THjZa"));
-
-
     }
 
     @Test
-    public void getOauthTokenByPost()
-    {
+    public void getOauthTokenByPost() {
         String url = "http://localhost:8080/oauth/token";
 
         RestTemplate client = new RestTemplate();
@@ -63,8 +58,7 @@ public class Auth2DemoApplicationTests
     }
 
     @Test
-    public void refreshOauthTokenByPost()
-    {
+    public void refreshOauthTokenByPost() {
         String url = "http://localhost:8080/oauth/token";
 
         RestTemplate client = new RestTemplate();
@@ -87,5 +81,4 @@ public class Auth2DemoApplicationTests
         OauthTokenResultVO result = response.getBody();
         System.out.println(result);
     }
-
 }

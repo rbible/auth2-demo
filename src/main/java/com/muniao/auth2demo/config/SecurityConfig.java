@@ -12,28 +12,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * 安全服务器
  */
 @Configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter
-{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     @Bean
-    protected AuthenticationManager authenticationManager() throws Exception
-    {
+    protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
     @Bean
     @Override
-    protected UserDetailsService userDetailsService()
-    {
+    protected UserDetailsService userDetailsService() {
         return super.userDetailsService();
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception
-    {
-        auth
-                .inMemoryAuthentication()
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
                 .withUser("javaboy")
                 .password("$2a$10$kwLIAqAupvY87OM.O25.Yu1QKEXV1imAv7jWbDaQRFUFWSnSiDEwG")
                 .roles("admin")
@@ -44,10 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception
-    {
-        http
-                .antMatcher("/oauth/**")
+    protected void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/oauth/**")
                 .authorizeRequests()
                 .antMatchers("/oauth/**").permitAll()
                 .and()
