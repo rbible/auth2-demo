@@ -11,21 +11,17 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
  */
 @Configuration
 @EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter
-{
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+
     @Override
-    public void configure(ResourceServerSecurityConfigurer resources) throws Exception
-    {
-        resources
-                .resourceId("rid")//指定资源ID
+    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+        resources.resourceId("rid")//指定资源ID
                 .stateless(true);//基于令牌认证
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception
-    {
-        http
-                .authorizeRequests()
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("admin")
                 .antMatchers("/user/**").hasRole("user")
                 .anyRequest().authenticated();
