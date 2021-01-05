@@ -1,4 +1,4 @@
-package com.muniao.auth2demo;
+package com.muniao.auth2demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

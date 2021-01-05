@@ -35,8 +35,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients
-                .inMemory()
+        clients.inMemory()
                 //password认证模式
                 .withClient("password")
                 //授权模式
@@ -49,8 +48,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints
-                .tokenStore(new RedisTokenStore(redisConnectionFactory))
+        endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService);
     }

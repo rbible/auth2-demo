@@ -27,7 +27,9 @@ public class Auth2DemoApplicationTests {
         System.out.println(passwordEncoder.encode("123"));
         System.out.println(passwordEncoder.encode("123"));
 
-        System.out.println(passwordEncoder.matches("123", "$2a$10$LDwuVkti0rBTqT2.8LAdceOWYHjpO9vixkMFKxsJHx1j4Oi7THjZa"));
+        System.out.println(passwordEncoder.matches("123",
+                "$2a$10$LDwuVkti0rBTqT2.8LAdceOWYHjpO9vixkMFKxsJHx1j4Oi7THjZa")
+        );
     }
 
     @Test
@@ -77,8 +79,8 @@ public class Auth2DemoApplicationTests {
 
         //执行HTTP请求，将返回的结构使用ResultVO类格式化
         ResponseEntity<OauthTokenResultVO> response = client.exchange(url, method, requestEntity, OauthTokenResultVO.class);
-
         OauthTokenResultVO result = response.getBody();
+
         System.out.println(result);
     }
 }
